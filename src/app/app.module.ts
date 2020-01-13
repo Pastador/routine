@@ -10,6 +10,8 @@ import { RoutineFormComponent } from './routine-list/routine-form/routine-form.c
 import { Routes } from '@angular/router';
 // Services
 import {RoutineService} from './services/routine.service';
+import {RouterModule} from '@angular/router';
+import {CheckboxModule} from 'primeng/checkbox';
 
 const appRoutes: Routes = [
   { path: 'routines', component: RoutineListComponent },
@@ -23,10 +25,13 @@ const appRoutes: Routes = [
     RoutineListComponent,
     SingleRoutineComponent,
     RoutineFormComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
+    CheckboxModule
   ],
   providers: [RoutineService],
   bootstrap: [AppComponent]

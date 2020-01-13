@@ -1,0 +1,23 @@
+{
+ "listeRoutines":
+    [
+        {
+            "id":1,
+            "name":"musculation",
+            "frequence":"quotidien",
+            "jour":""
+        },
+        {
+            "id":2,
+            "name":"autoformation informatique",
+            "frequence":"quotidien",
+            "jour":""
+        },
+        {
+            "id":3,
+            "name":"objectifs du jour",
+            "frequence":"quotidien",
+            "jour":""
+        }
+    ]
+}

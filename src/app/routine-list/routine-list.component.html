@@ -1,1 +1,7 @@
-<p>routine-list works!</p>
+<h5>Liste des routines</h5>
+<div class="row">
+    <div *ngFor="let routine of routines let c = index" class="col-md-12">
+        <app-single-routine [routineActive]="routine">
+        </app-single-routine>
+    </div>
+</div>
