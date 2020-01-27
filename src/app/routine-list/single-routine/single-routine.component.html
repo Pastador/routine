@@ -1,12 +1,6 @@
-
-<div class="ui-g-12">
-    <p-checkbox 
-        id = "{{ routineActive.id }}"
-        name ="lesroutines" 
-        value=" {{  routineActive.name }}"
-        label=" {{  routineActive.name }}"
-        inputId=" {{c}}" 
-      
-        >
-    </p-checkbox>
-</div>
+<tr>
+    <td> {{ routineActive.id }} </td>
+    <td> {{  routineActive.name }} </td>
+    <td>{{  routineActive.frequence }}</td>
+    <td>{{  routineActive.jour }}</td>
+</tr>

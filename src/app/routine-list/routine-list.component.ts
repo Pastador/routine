@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Routine } from '../models/routine.model';
+import { RoutineService } from '../services/routine.service';
+import { Subscription } from 'rxjs/Subscription';
 import { SingleRoutineComponent } from '../routine-list/single-routine/single-routine.component';
+import { Router } from '@angular/router';
 declare var require: any;
 var JSON = require('../files/test.json');
 
@@ -9,14 +12,36 @@ var JSON = require('../files/test.json');
   templateUrl: './routine-list.component.html',
   styleUrls: ['./routine-list.component.scss']
 })
-export class RoutineListComponent implements OnInit {
+export class RoutineListComponent implements OnInit, OnDestroy   {
 
   routines: Routine[];
-  constructor() { }
+  routineSubscription : Subscription;
+  constructor(private routineService:RoutineService, private router: Router) { }
 
   ngOnInit() {
-    this.routines = JSON.listeRoutines;
-    console.log("liste des routines"+this.routines);
+   
+   this.routineSubscription = this.routineService.routinesSubject.subscribe(
+       (routines: Routine[]) => {
+      this.routines = routines;
+    }
+  );
+  this.routineService.emitRoutines();
+  // console.log("liste des routines"+this.routines);
   }
 
+  onNewRoutine() {
+   // this.router.navigate(['/books', 'new']);
+  }
+
+  onDeleteRoutine(routine: Routine) {
+    this.routineService.removeBook(routine);
+  }
+
+  onViewRoutine(id: number) {
+   // this.router.navigate(['/books', 'view', id]);
+  }
+
+  ngOnDestroy() {
+    this.routineSubscription.unsubscribe();
+  }
 }

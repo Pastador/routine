@@ -1,0 +1,15 @@
+<h5>A faire</h5>
+<div class="row">
+    <div *ngFor="let routine of routines let c = index" class="col-md-12">
+        <div class="ui-g-12">
+            <p-checkbox 
+                id = "{{ routineActive.id }}"
+                name ="lesroutines" 
+                value=" {{  routineActive.name }}"
+                label=" {{  routineActive.name }}"
+                inputId=" {{c}}" 
+                >
+            </p-checkbox>
+        </div>
+    </div>
+</div>

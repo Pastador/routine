@@ -1,7 +1,45 @@
 <h5>Liste des routines</h5>
+
 <div class="row">
-    <div *ngFor="let routine of routines let c = index" class="col-md-12">
-        <app-single-routine [routineActive]="routine">
-        </app-single-routine>
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Fréquence</th>
+                <th>Jour</th>
+                <th>*</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let routine of routines let c = index" >
+                <app-single-routine [routineActive]="routine">
+                </app-single-routine>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+      <h2>Inventaire des routines</h2>
+      <div class="list-group">
+        <button
+          class="list-group-item"
+          *ngFor="let routine of routines; let i = index"
+          (click)="onViewBook(i)">
+          <h3 class="list-group-item-heading">
+            {{ routine.name }}
+            <p-button 
+                icon="pi pi-times"
+                (onClick)="onDeleteBook(book)">
+            </p-button>
+          </h3>
+        </button>
+      </div>
+      <button class="btn btn-primary" (click)="onNewBook()">Nouvelle routine</button>
     </div>
 </div>
