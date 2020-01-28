@@ -10,10 +10,12 @@ import { RoutineFormComponent } from './routine-list/routine-form/routine-form.c
 import { Routes } from '@angular/router';
 import { DayComponent } from './day/day.component';
 import {ButtonModule} from 'primeng/button';
+import { FeatherModule } from 'angular-feather';
 // Services
 import {RoutineService} from './services/routine.service';
 import {RouterModule} from '@angular/router';
 import {CheckboxModule} from 'primeng/checkbox';
+import { Camera, Heart, Github,Edit,Delete,Trash2 } from 'angular-feather/icons';
 
 
 const appRoutes: Routes = [
@@ -22,6 +24,15 @@ const appRoutes: Routes = [
   { path: 'routines/view/:id', component: SingleRoutineComponent },
   { path: 'day', component: DayComponent }
 ];
+
+const icons = {
+  Camera,
+  Heart,
+  Github,
+  Delete,
+  Edit,
+  Trash2
+};
 
 @NgModule({
   declarations: [
@@ -37,7 +48,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     CheckboxModule,
-    ButtonModule
+    ButtonModule,
+    FeatherModule.pick(icons)
   ],
   providers: [RoutineService],
   bootstrap: [AppComponent]

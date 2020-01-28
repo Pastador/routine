@@ -4,7 +4,8 @@ export class Routine {
         public id: number,              // identifiant de la routine
         public name: string,            // nom de la routine
         public frequence: string,
-        public jour: string
+        public jour: string,
+        public ordre: number
     )
     {}
 }
