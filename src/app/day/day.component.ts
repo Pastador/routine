@@ -17,5 +17,4 @@ export class DayComponent implements OnInit {
     this.routines = JSON.listeRoutines;
     console.log("liste des routines"+this.routines);
   }
-
 }
