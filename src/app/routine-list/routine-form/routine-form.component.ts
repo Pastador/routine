@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Routine } from '../../models/routine.model';
 
 @Component({
   selector: 'app-routine-form',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./routine-form.component.scss']
 })
 export class RoutineFormComponent implements OnInit {
+
+  //@routine: Routine;
 
   constructor() { }
 

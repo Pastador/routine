@@ -20,7 +20,7 @@
                   <td>{{ routine.frequence }}</td>
                   <td>{{ routine.jour }}</td>
                   <td><i-feather name="edit" style="color: green;"></i-feather></td>
-                  <td><i-feather name="trash-2" style="color: red;"></i-feather></td>
+                  <td><i-feather name="trash-2" style="color: red;" (click)="onDeleteRoutine(routine)"></i-feather></td>
                 </tr>
             </tbody>
 

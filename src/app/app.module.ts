@@ -9,19 +9,25 @@ import { SingleRoutineComponent } from './routine-list/single-routine/single-rou
 import { RoutineFormComponent } from './routine-list/routine-form/routine-form.component';
 import { Routes } from '@angular/router';
 import { DayComponent } from './day/day.component';
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { FeatherModule } from 'angular-feather';
+import { ReactiveFormsModule } from '@angular/forms';
 // Services
-import {RoutineService} from './services/routine.service';
-import {RouterModule} from '@angular/router';
-import {CheckboxModule} from 'primeng/checkbox';
-import { Camera, Heart, Github,Edit,Delete,Trash2 } from 'angular-feather/icons';
+import { RoutineService } from './services/routine.service';
+import { UserService } from './services/user.service';
+import { RouterModule } from '@angular/router';
+import { CheckboxModule } from 'primeng/checkbox';
+import { Camera, Heart, Github, Edit, Delete, Trash2 } from 'angular-feather/icons';
+import { UserListComponent } from './user-list/user-list.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 const appRoutes: Routes = [
   { path: 'routines', component: RoutineListComponent },
   { path: 'routines/new', component: RoutineFormComponent },
   { path: 'routines/view/:id', component: SingleRoutineComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'new-user', component: NewUserComponent },
   { path: 'day', component: DayComponent }
 ];
 
@@ -40,18 +46,21 @@ const icons = {
     RoutineListComponent,
     SingleRoutineComponent,
     RoutineFormComponent,
-    DayComponent
-    
+    DayComponent,
+    UserListComponent,
+    NewUserComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     CheckboxModule,
     ButtonModule,
     FeatherModule.pick(icons)
   ],
-  providers: [RoutineService],
+  providers: [RoutineService, UserService],
   bootstrap: [AppComponent]
 })
 
