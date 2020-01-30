@@ -20,11 +20,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { Camera, Heart, Github, Edit, Delete, Trash2 } from 'angular-feather/icons';
 import { UserListComponent } from './user-list/user-list.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { NewRoutineComponent } from './routine-list/new-routine/new-routine.component';
 
 
 const appRoutes: Routes = [
   { path: 'routines', component: RoutineListComponent },
-  { path: 'routines/new', component: RoutineFormComponent },
+  { path: 'routines/new', component: NewRoutineComponent },
   { path: 'routines/view/:id', component: SingleRoutineComponent },
   { path: 'users', component: UserListComponent },
   { path: 'new-user', component: NewUserComponent },
@@ -48,7 +49,8 @@ const icons = {
     RoutineFormComponent,
     DayComponent,
     UserListComponent,
-    NewUserComponent
+    NewUserComponent,
+    NewRoutineComponent
 
   ],
   imports: [
