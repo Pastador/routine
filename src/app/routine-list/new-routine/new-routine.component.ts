@@ -17,6 +17,10 @@ export class NewRoutineComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const name = form.value['name'];
-    const status = form.value['status'];
+    const frequence = form.value['frequence'];
+    const jour = form.value['jour'];
+    const ordre = form.value['ordre'];
+    this.routineService.createNewRoutine(name,frequence,jour,ordre);
+    this.router.navigate(['/routines']);
   }
 }

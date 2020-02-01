@@ -4,35 +4,35 @@
         {
             "id":1,
             "name":"musculation",
-            "frequence":"quotidien",
+            "frequence":"Quotidienne",
             "jour":"",
             "ordre":1
         },
         {
             "id":2,
             "name":"autoformation informatique",
-            "frequence":"quotidien",
+            "frequence":"Quotidienne",
             "jour":"",
             "ordre":2
         },
         {
             "id":3,
             "name":"objectifs du jour",
-            "frequence":"quotidien",
+            "frequence":"Quotidienne",
             "jour":"",
             "ordre":3
         },
         {
             "id":4,
             "name":"objectifs de la semaine",
-            "frequence":"hebdo",
-            "jour":"dimanche",
+            "frequence":"Hebdomadaire",
+            "jour":"Dimanche",
             "ordre":1
         },
         {
             "id":5,
             "name":"Anglais",
-            "frequence":"hebdo",
+            "frequence":"Hebdomadaire",
             "jour":"",
             "ordre":5
         }

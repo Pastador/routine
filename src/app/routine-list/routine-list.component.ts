@@ -30,11 +30,17 @@ export class RoutineListComponent implements OnInit, OnDestroy   {
   }
 
   onNewRoutine() {
-   // this.router.navigate(['/books', 'new']);
+   this.router.navigate(['routines/form/0']);
+  }
+
+  onModifyRoutine(routine: Routine) {
+    let id=routine.id;
+    console.log('Routine list component id : '+id);
+    this.router.navigate(['routines/form/'+id]);
   }
 
   onDeleteRoutine(routine: Routine) {
-    this.routineService.removeBook(routine);
+    this.routineService.removeRoutine(routine);
   }
 
   onViewRoutine(id: number) {

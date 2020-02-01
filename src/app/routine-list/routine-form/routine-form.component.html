@@ -1,1 +1,61 @@
-test
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="row">
+        <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="name">
+                                Titre
+                            </label>
+                            <input type="text" id="name" name="name" class="form-control" [ngModel]="name" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="ordre">
+                                Ordre
+                            </label>
+                            <input type="text" id="ordre" name="ordre" class="form-control" [ngModel]="ordre" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="frequence">
+                                Fréquence
+                            </label>
+                            <select id="frequence" name="frequence" class="form-control" [ngModel]="frequence" required>
+                                <option value="Quotidienne">Quotidienne</option>
+                                <option value="Hebdomadaire">Hebdomadaire</option>
+                                <option value="Mensuel">Mensuel</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div 
+                            class="form-group">
+                            <label for="jour">
+                                Jour
+                            </label>
+                            <select id="jour" name="jour" class="form-control" [ngModel]="jour">
+                                <option value="Lundi">Lundi</option>
+                                <option value="Mardi">Mardi</option>
+                                <option value="Mercredi">Mercredi</option>
+                                <option value="Jeudi">Jeudi</option>
+                                <option value="Vendredi">Vendredi</option>
+                                <option value="Samedi">Samedi</option>
+                                <option value="Dimanche">Dimanche</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button *ngIf="isNewTask==true"
+                class="btn btn-primary" type="submit" [disabled]="f.invalid">Creer</button>
+                <button *ngIf="isNewTask==false"
+                class="btn btn-primary" type="submit" [disabled]="f.invalid">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
