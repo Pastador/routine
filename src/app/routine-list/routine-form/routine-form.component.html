@@ -26,15 +26,20 @@
                             <label for="frequence">
                                 Fréquence
                             </label>
-                            <select id="frequence" name="frequence" class="form-control" [ngModel]="frequence" required>
-                                <option value="Quotidienne">Quotidienne</option>
+                            <select id="frequence" 
+                                    name="frequence" 
+                                    class="form-control" 
+                                    [ngModel]="frequence" 
+                                   
+                                    required>
+                                <option value="Quotidienne" >Quotidienne</option>
                                 <option value="Hebdomadaire">Hebdomadaire</option>
                                 <option value="Mensuel">Mensuel</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div 
+                        <div *ngIf="frequence!='Quotidienne'"
                             class="form-group">
                             <label for="jour">
                                 Jour

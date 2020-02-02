@@ -12,31 +12,34 @@ var JSON = require('../files/test.json');
   templateUrl: './routine-list.component.html',
   styleUrls: ['./routine-list.component.scss']
 })
-export class RoutineListComponent implements OnInit, OnDestroy   {
+export class RoutineListComponent implements OnInit, OnDestroy {
 
   routines: Routine[];
-  routineSubscription : Subscription;
-  constructor(private routineService:RoutineService, private router: Router) { }
+  routineSubscription: Subscription;
+  actionForm: string;
+  constructor(private routineService: RoutineService, private router: Router) { }
+
 
   ngOnInit() {
-   
-   this.routineSubscription = this.routineService.routinesSubject.subscribe(
-       (routines: Routine[]) => {
-      this.routines = routines;
-    }
-  );
-  this.routineService.emitRoutines();
-  // console.log("liste des routines"+this.routines);
+
+    this.routineSubscription = this.routineService.routinesSubject.subscribe(
+      (routines: Routine[]) => {
+        this.routines = routines;
+      }
+    );
+    this.routineService.emitRoutines();
+    // console.log("liste des routines"+this.routines);
   }
 
   onNewRoutine() {
-   this.router.navigate(['routines/form/0']);
+    this.actionForm = "new";
+    this.router.navigate(['routines/form/0']);
   }
 
   onModifyRoutine(routine: Routine) {
-    let id=routine.id;
-    console.log('Routine list component id : '+id);
-    this.router.navigate(['routines/form/'+id]);
+    let id = routine.id;
+    console.log('Routine list component id : ' + id);
+    this.router.navigate(['routines/form/' + id]);
   }
 
   onDeleteRoutine(routine: Routine) {
@@ -44,7 +47,7 @@ export class RoutineListComponent implements OnInit, OnDestroy   {
   }
 
   onViewRoutine(id: number) {
-   // this.router.navigate(['/books', 'view', id]);
+    // this.router.navigate(['/books', 'view', id]);
   }
 
   ngOnDestroy() {

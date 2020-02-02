@@ -51,6 +51,11 @@ export class RoutineFormComponent implements OnInit {
     this.ordre = laRoutine.ordre;
   }
 
+  changeFrequence(value:any){
+    console.log("La fréquence a changé : "+ this.frequence);
+// (change)="changeFrequence(option.value)"
+  }
+
   onSubmit(form: NgForm) {
     this.name = form.value['name'];
     this.frequence = form.value['frequence'];
