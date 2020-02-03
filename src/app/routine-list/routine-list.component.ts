@@ -2,10 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Routine } from '../models/routine.model';
 import { RoutineService } from '../services/routine.service';
 import { Subscription } from 'rxjs/Subscription';
-import { SingleRoutineComponent } from '../routine-list/single-routine/single-routine.component';
 import { Router } from '@angular/router';
 declare var require: any;
-var JSON = require('../files/test.json');
+
 
 @Component({
   selector: 'app-routine-list',
@@ -17,6 +16,8 @@ export class RoutineListComponent implements OnInit, OnDestroy {
   routines: Routine[];
   routineSubscription: Subscription;
   actionForm: string;
+  searchText: string;
+
   constructor(private routineService: RoutineService, private router: Router) { }
 
 
@@ -32,12 +33,12 @@ export class RoutineListComponent implements OnInit, OnDestroy {
   }
 
   onNewRoutine() {
-    this.actionForm = "new";
+    this.actionForm = 'new';
     this.router.navigate(['routines/form/0']);
   }
 
   onModifyRoutine(routine: Routine) {
-    let id = routine.id;
+    const id = routine.id;
     console.log('Routine list component id : ' + id);
     this.router.navigate(['routines/form/' + id]);
   }

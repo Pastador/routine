@@ -56,10 +56,18 @@
                         </div>
                     </div>
                 </div>
-                <button *ngIf="isNewTask==true"
-                class="btn btn-primary" type="submit" [disabled]="f.invalid">Creer</button>
-                <button *ngIf="isNewTask==false"
-                class="btn btn-primary" type="submit" [disabled]="f.invalid">Modifier</button>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <button *ngIf="isNewTask==true"
+                        class="btn btn-primary  mb-5 " type="submit" [disabled]="f.invalid">Creer</button>
+                        <button *ngIf="isNewTask==false"
+                        class="btn btn-primary  mb-5 " type="submit" [disabled]="f.invalid">Modifier</button>
+                    </div>
+                    <div class="col-sm-2">
+                    <button class="btn btn-primary mb-5 feather feather-circle  " type="submit" (click)="onBack()">Retour</button>
+                   </div>
+                   
+                </div>
             </form>
         </div>
     </div>

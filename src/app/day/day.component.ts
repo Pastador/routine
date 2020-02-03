@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Routine } from '../models/routine.model';
+import { RoutineService } from '../services/routine.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
+import { PlanDayService } from '../services/Planday.service';
+
 declare var require: any;
-var JSON = require('../files/test.json');
 
 @Component({
   selector: 'app-day',
@@ -9,12 +13,19 @@ var JSON = require('../files/test.json');
   styleUrls: ['./day.component.scss']
 })
 export class DayComponent implements OnInit {
-  routines: Routine[];
+  dayRoutines: Routine[];
+  hebdoRoutines: Routine[];
+  todaySubscription: Subscription;
 
-  constructor() { }
+  constructor(private routineService: RoutineService, 
+              private plaDayService : PlanDayService, 
+              private router: Router) { }
 
   ngOnInit() {
-    this.routines = JSON.listeRoutines;
-    console.log("liste des routines"+this.routines);
+    console.log("Debug : dayComponent - ngOnInit");
+    this.dayRoutines = this.routineService.getQuotiRoutines();
+    this.hebdoRoutines=this.routineService.getHebdoRoutines();
+    this.plaDayService.getCurrentDay();
+    console.log("liste des routines"+this.dayRoutines);
   }
 }

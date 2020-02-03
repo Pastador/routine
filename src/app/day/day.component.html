@@ -1,33 +1,21 @@
-<h5>A faire</h5>
-<div class="row">
-    <div *ngFor="let routine of routines let c = index" class="col-md-12">
-        <div class="ui-g-12">
-            <p-checkbox 
-                id = "{{ routineActive.id }}"
-                name ="lesroutines" 
-                value=" {{  routineActive.name }}"
-                label=" {{  routineActive.name }}"
-                inputId=" {{c}}" 
-                >
-            </p-checkbox>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-      <div class="card" style="width: 18rem;">
-        <ul 
-          class="list-group list-group-flush"
-          *ngFor="let routine of routines let c = index">
-  
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-      </div>
-       
-                 
-  
-    </div>
+<h3>Planning ... </h3>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Jour
   </div>
-  
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let routine of dayRoutines"
+    class="list-group-item">{{ routine.name }}</li>
+  </ul>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Semaine
+  </div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let routine of hebdoRoutines"
+    class="list-group-item">{{ routine.name }}</li>
+  </ul>
+</div>

@@ -9,14 +9,14 @@ var JSON = require('../files/test.json');
   providedIn: 'root'
 })
 export class RoutineService {
-  
-  routines: Routine[];  
+
+  routines: Routine[];
   routinesSubject = new Subject<Routine[]>();
 
   constructor() {
     this.getRoutines();
-}
-  
+  }
+
   emitRoutines() {
     this.routinesSubject.next(this.routines);
   }
@@ -26,7 +26,7 @@ export class RoutineService {
     this.emitRoutines();
   }
 
-  getRoutinebyId(id:number){
+  getRoutinebyId(id: number) {
     const routine = this.routines.find(
       (s) => {
         return s.id === id;
@@ -36,9 +36,45 @@ export class RoutineService {
     return routine;
   }
 
-  createNewRoutine(name: string, frequence:string, jour:string, ordre:number) {
+  getRoutineOfDay(date: Date) {
+
+    //this.routines.filter()
+  }
+
+  getQuotiRoutines():Routine[] {
+    const searchTerm: string = 'Quotidienne';
+    return this.routines.filter(routine =>
+      routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+  }
+
+
+  getHebdoRoutines():Routine[] {
+    const searchTerm: string = 'Hebdomadaire';
+    const listeHebdo: Routine[] =  this.routines.filter(routine =>
+      routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+      return listeHebdo;
+  }
+
+  getIndexRoutine(routineToFind: Routine) {
+    const index = this.routines.findIndex(
+      (laRoutine) => {
+        if (laRoutine === routineToFind) {
+          return true;
+        }
+      }
+    );
+    console.log('DEBUG : identifiant Routine : ' + index);
+    return index;
+  }
+
+  modifyRoutine(routine: Routine) {
+    console.log('DEBUG : RouineServicce - modifyRoutine : ' + routine.id);
+    this.routines[this.getIndexRoutine(routine)] = routine;
+  }
+
+  createNewRoutine(name: string, frequence: string, jour: string, ordre: number) {
     const id = this.routines[(this.routines.length - 1)].id + 1;
-    const newRoutine = new Routine(id, name,frequence,jour,ordre);
+    const newRoutine = new Routine(id, name, frequence, jour, ordre);
     this.routines.push(newRoutine);
     //this.saveRoutines();
     this.emitRoutines();
@@ -47,7 +83,7 @@ export class RoutineService {
   removeRoutine(routine: Routine) {
     const routineIndexToRemove = this.routines.findIndex(
       (routineEl) => {
-        if(routineEl === routine) {
+        if (routineEl === routine) {
           return true;
         }
       }
@@ -57,8 +93,8 @@ export class RoutineService {
     this.emitRoutines();
   }
 
-  saveRoutine(id:number, name: string, frequence:string, jour:string, ordre:number) {
-//todo
+  saveRoutine(id: number, name: string, frequence: string, jour: string, ordre: number) {
+    //todo
   }
 
 }

@@ -1,34 +1,46 @@
 <div class="jumbotron">
   <h5>Liste des routines</h5>
 </div>
-
 <div class="row">
-    <div class="col-md-6">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th>Nom</th>
-                <th>Fréquence</th>
-                <th>Jour</th>
-                <th>Ordre</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let routine of routines let c = index">
-                  <td>{{ routine.id }}</td>
-                  <td>{{ routine.name }}</td>
-                  <td>{{ routine.frequence }}</td>
-                  <td>{{ routine.jour }}</td>
-                  <td>{{ routine.ordre }}</td>
-                  <td><i-feather name="edit" style="color: green;" (click)="onModifyRoutine(routine)"></i-feather></td>
-                  <td><i-feather name="trash-2" style="color: red;" (click)="onDeleteRoutine(routine)"></i-feather></td>
-                </tr>
-            </tbody>
-
-        </table>
-        <button class="btn btn-primary" (click)="onNewRoutine()">Nouvelle routine</button>
-    </div>
+  <div class="col-md-6 mb-5">
+    <input class="form-control" 
+            type="text" 
+            name="search" 
+            [(ngModel)]="searchText" 
+            autocomplete="off"
+            placeholder="Rechercher par fréquence"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th>Nom</th>
+          <th>Fréquence</th>
+          <th>Jour</th>
+          <th>Ordre</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let routine of routines | routineFilter:searchText">
+          <td>{{ routine.id }}</td>
+          <td>{{ routine.name }}</td>
+          <td>{{ routine.frequence }}</td>
+          <td>{{ routine.jour }}</td>
+          <td>{{ routine.ordre }}</td>
+          <td>
+            <i-feather name="edit" style="color: green;" (click)="onModifyRoutine(routine)"></i-feather>
+          </td>
+          <td>
+            <i-feather name="trash-2" style="color: red;" (click)="onDeleteRoutine(routine)"></i-feather>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="onNewRoutine()">Nouvelle routine</button>
+  </div>
 </div>

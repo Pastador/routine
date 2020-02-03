@@ -23,7 +23,7 @@ export class RoutineFormComponent implements OnInit {
   ngOnInit() {
     // **** Récupération de la routine 
     this.idRoutineAModifier = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.idRoutineAModifier);
+    //console.log(this.idRoutineAModifier);
     // **** New or not
     if (this.idRoutineAModifier == 0) {
       this.isNewTask = true;
@@ -43,30 +43,37 @@ export class RoutineFormComponent implements OnInit {
   }
 
   initModif(laRoutine: Routine) {
-    console.log('initModif' + laRoutine);
+    console.log('DEBUG :FormComponent - initModif : ' + laRoutine);
     this.name = laRoutine.name;
     this.frequence = laRoutine.frequence;
-    console.log('frequence' + this.frequence);
+    console.log('frequence : ' + this.frequence);
     this.jour = laRoutine.jour;
     this.ordre = laRoutine.ordre;
   }
 
-  changeFrequence(value:any){
-    console.log("La fréquence a changé : "+ this.frequence);
-// (change)="changeFrequence(option.value)"
+  changeFrequence(value: any) {
+    console.log("La fréquence a changé : " + this.frequence);
+    // (change)="changeFrequence(option.value)"
   }
 
   onSubmit(form: NgForm) {
+    console.log('OnSubmit');
     this.name = form.value['name'];
     this.frequence = form.value['frequence'];
     this.jour = form.value['jour'];
     this.ordre = form.value['ordre'];
-    if ( this.isNewTask){
+    if (this.isNewTask) {
       this.routineService.createNewRoutine(this.name, this.frequence, this.jour, this.ordre);
-    }else{
-this.routineService.saveRoutine(form.value['id'],this.name, this.frequence, this.jour, this.ordre)
+    } else {
+      this.routineAModifier.name=this.name;
+      this.routineAModifier.frequence=this.frequence;
+      this.routineAModifier.jour=this.jour;
+      this.routineAModifier.ordre=this.ordre;
+      this.routineService.modifyRoutine(this.routineAModifier);
     }
     this.router.navigate(['/routines']);
   }
-
+  onBack() {
+    this.router.navigate(['/routines']);
+  }
 }
