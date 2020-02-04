@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Routine } from '../models/routine.model';
+import { PlanDay } from '../models/PlanDay.model';
 import { RoutineService } from '../services/routine.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import { PlanDayService } from '../services/Planday.service';
+
 
 declare var require: any;
 
@@ -15,17 +17,16 @@ declare var require: any;
 export class DayComponent implements OnInit {
   dayRoutines: Routine[];
   hebdoRoutines: Routine[];
-  todaySubscription: Subscription;
+  // todaySubscription: Subscription;
+  planToday: PlanDay;
 
-  constructor(private routineService: RoutineService, 
-              private plaDayService : PlanDayService, 
+
+  constructor(private routineService: RoutineService,
+              private plaDayService: PlanDayService,
               private router: Router) { }
 
   ngOnInit() {
-    console.log("Debug : dayComponent - ngOnInit");
-    this.dayRoutines = this.routineService.getQuotiRoutines();
-    this.hebdoRoutines=this.routineService.getHebdoRoutines();
-    this.plaDayService.getCurrentDay();
-    console.log("liste des routines"+this.dayRoutines);
+    console.log('Debug : dayComponent - ngOnInit');
+    this.planToday = this.plaDayService.getCurrentDay();
   }
 }

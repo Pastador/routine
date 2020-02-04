@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Routine } from '../models/routine.model';
 import { Subject } from 'rxjs/Subject';
+import { JourSemaineEnum } from '../models/PlanDay.model';
 
 declare var require: any;
 var JSON = require('../files/test.json');
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoutineService {
 
+
   routines: Routine[];
   routinesSubject = new Subject<Routine[]>();
+
 
   constructor() {
     this.getRoutines();
@@ -38,21 +43,22 @@ export class RoutineService {
 
   getRoutineOfDay(date: Date) {
 
-    //this.routines.filter()
+    this.routines.filter(routine =>
+      routine.jour.toString().indexOf)
   }
 
-  getQuotiRoutines():Routine[] {
+  getQuotiRoutines(): Routine[] {
     const searchTerm: string = 'Quotidienne';
     return this.routines.filter(routine =>
       routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
   }
 
-
-  getHebdoRoutines():Routine[] {
+  getHebdoRoutines(day: number): Routine[] {
+    // Double filtre
     const searchTerm: string = 'Hebdomadaire';
-    const listeHebdo: Routine[] =  this.routines.filter(routine =>
-      routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
-      return listeHebdo;
+    const listeHebdo: Routine[] = this.routines.filter(routine =>
+      routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1).filter(routine => routine.jour === day);
+    return listeHebdo;
   }
 
   getIndexRoutine(routineToFind: Routine) {
@@ -72,7 +78,7 @@ export class RoutineService {
     this.routines[this.getIndexRoutine(routine)] = routine;
   }
 
-  createNewRoutine(name: string, frequence: string, jour: string, ordre: number) {
+  createNewRoutine(name: string, frequence: string, jour: number, ordre: number) {
     const id = this.routines[(this.routines.length - 1)].id + 1;
     const newRoutine = new Routine(id, name, frequence, jour, ordre);
     this.routines.push(newRoutine);
@@ -93,8 +99,7 @@ export class RoutineService {
     this.emitRoutines();
   }
 
-  saveRoutine(id: number, name: string, frequence: string, jour: string, ordre: number) {
-    //todo
+  saveRoutine() {
+   // JSON.listeRoutines = this.routines; //??
   }
-
 }

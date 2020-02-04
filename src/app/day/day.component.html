@@ -1,21 +1,34 @@
-<h3>Planning ... </h3>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Jour
-  </div>
-  <ul class="list-group list-group-flush">
-    <li *ngFor="let routine of dayRoutines"
-    class="list-group-item">{{ routine.name }}</li>
-  </ul>
+<div class="jumbotron">
+  <h5>Planning du {{planToday.date | date  : 'd/MM/y'}}</h5>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Semaine
+<div class="card-columns">
+  <div class="card mb-5" style="width: 20rem;">
+    <div class="card-header">
+      Tâches quotidiennes
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let routine of planToday.dayRoutines" class="list-group-item">{{ routine.name }}</li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-    <li *ngFor="let routine of hebdoRoutines"
-    class="list-group-item">{{ routine.name }}</li>
-  </ul>
+
+  <div class="card mb-5" style="width: 20rem;">
+    <div class="card-header">
+      Tâches hebdo
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let routine of planToday.hebdoRoutines" 
+        class="list-group-item">{{ routine.name }}</li>
+    </ul>
+  </div>
+
+  <div class="card mb-5" style="width: 20rem;">
+    <div class="card-header">
+      Tâches mensuelles
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let routine of planToday.monthRoutine" 
+        class="list-group-item">{{ routine.name }}</li>
+    </ul>
+  </div>
 </div>

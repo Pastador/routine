@@ -3,38 +3,45 @@
     [
         {
             "id":1,
-            "name":"musculation",
+            "name":"Sport",
             "frequence":"Quotidienne",
-            "jour":"",
+            "jour":0,
             "ordre":1
         },
         {
             "id":2,
-            "name":"autoformation informatique",
+            "name":"Autoformation informatique",
             "frequence":"Quotidienne",
-            "jour":"",
+            "jour":0,
             "ordre":2
         },
         {
             "id":3,
-            "name":"objectifs du jour",
+            "name":"Objectifs du jour",
             "frequence":"Quotidienne",
-            "jour":"",
+            "jour":0,
             "ordre":3
         },
         {
             "id":4,
-            "name":"objectifs de la semaine",
+            "name":"Objectifs de la semaine",
             "frequence":"Hebdomadaire",
-            "jour":"Dimanche",
+            "jour":7,
             "ordre":1
         },
         {
             "id":5,
             "name":"Anglais",
             "frequence":"Hebdomadaire",
-            "jour":"",
+            "jour":2,
             "ordre":5
+        },
+        {
+            "id":6,
+            "name":"Piscine",
+            "frequence":"Mensuel",
+            "jour":0,
+            "ordre":1
         }
     ]
 }

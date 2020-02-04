@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Routine } from '../models/routine.model';
+import { JourSemaineEnum } from '../models/PlanDay.model';
 import { RoutineService } from '../services/routine.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
@@ -17,6 +18,7 @@ export class RoutineListComponent implements OnInit, OnDestroy {
   routineSubscription: Subscription;
   actionForm: string;
   searchText: string;
+  jourSemaine: JourSemaineEnum;
 
   constructor(private routineService: RoutineService, private router: Router) { }
 

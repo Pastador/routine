@@ -30,7 +30,14 @@
           <td>{{ routine.id }}</td>
           <td>{{ routine.name }}</td>
           <td>{{ routine.frequence }}</td>
-          <td>{{ routine.jour }}</td>
+          <td *ngIf= "routine.jour === 0" class="text-align:center;"> - </td>
+          <td *ngIf= "routine.jour === 1">Lundi</td>
+          <td *ngIf= "routine.jour === 2">Mardi</td>
+          <td *ngIf= "routine.jour === 3">Mercredi</td>
+          <td *ngIf= "routine.jour === 4">Jeudi</td>
+          <td *ngIf= "routine.jour === 5">Vendredi</td>
+          <td *ngIf= "routine.jour === 6">Samedi</td>
+          <td *ngIf= "routine.jour === 7">Dimanche</td>
           <td>{{ routine.ordre }}</td>
           <td>
             <i-feather name="edit" style="color: green;" (click)="onModifyRoutine(routine)"></i-feather>

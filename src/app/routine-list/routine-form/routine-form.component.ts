@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Routine } from '../../models/routine.model';
+import { JourSemaineEnum } from '../../models/PlanDay.model';
 import { RoutineService } from '../../services/routine.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { RoutineService } from '../../services/routine.service';
 export class RoutineFormComponent implements OnInit {
   private name: string;
   private frequence: string;
-  private jour: string;
+  private jour: number;
   private ordre: number;
   private isNewTask: Boolean = false;
   idRoutineAModifier: number;
@@ -38,7 +39,7 @@ export class RoutineFormComponent implements OnInit {
   initNew() {
     this.name = "";
     this.frequence = "";
-    this.jour = "";
+    this.jour = 0;
     this.ordre = 0;
   }
 
@@ -60,15 +61,16 @@ export class RoutineFormComponent implements OnInit {
     console.log('OnSubmit');
     this.name = form.value['name'];
     this.frequence = form.value['frequence'];
-    this.jour = form.value['jour'];
+    this.jour = parseInt(form.value['jour']);
+    console.log('modif du jour : ' + this.jour);
     this.ordre = form.value['ordre'];
     if (this.isNewTask) {
       this.routineService.createNewRoutine(this.name, this.frequence, this.jour, this.ordre);
     } else {
-      this.routineAModifier.name=this.name;
-      this.routineAModifier.frequence=this.frequence;
-      this.routineAModifier.jour=this.jour;
-      this.routineAModifier.ordre=this.ordre;
+      this.routineAModifier.name = this.name;
+      this.routineAModifier.frequence = this.frequence;
+      this.routineAModifier.jour = this.jour;
+      this.routineAModifier.ordre = this.ordre;
       this.routineService.modifyRoutine(this.routineAModifier);
     }
     this.router.navigate(['/routines']);
