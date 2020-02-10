@@ -53,6 +53,10 @@ export class RoutineListComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/books', 'view', id]);
   }
 
+  onSaveRoutines(){
+this.routineService.saveRoutine();
+  }
+
   ngOnDestroy() {
     this.routineSubscription.unsubscribe();
   }

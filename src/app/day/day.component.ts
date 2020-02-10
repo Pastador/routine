@@ -28,5 +28,23 @@ export class DayComponent implements OnInit {
   ngOnInit() {
     console.log('Debug : dayComponent - ngOnInit');
     this.planToday = this.plaDayService.getCurrentDay();
+    console.log(this.planToday.hebdoRoutines.length);
+    console.log(this.planToday.monthRoutine.length);
+  }
+
+  monthRoutinesEditable() {
+    if (this.planToday.monthRoutine && this.planToday.monthRoutine.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  hebdoRoutinesEditable() {
+    if (this.planToday.hebdoRoutines.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

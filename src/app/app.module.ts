@@ -14,13 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NewUserComponent } from './new-user/new-user.component';
 import { FormsModule } from '@angular/forms';
 import { RoutineFilterPipe } from './filter/routine-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 // Services
 import { RoutineService } from './services/routine.service';
 import { PlanDayService } from './services/Planday.service';
 import { UserService } from './services/user.service';
 import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
-import { Camera, Heart, Github, Edit, Delete, Trash2 } from 'angular-feather/icons';
+import { Camera, Heart, Github, Edit, Delete, Trash2, Save } from 'angular-feather/icons';
 import { UserListComponent } from './user-list/user-list.component';
 
 
@@ -39,7 +40,8 @@ const icons = {
   Github,
   Delete,
   Edit,
-  Trash2
+  Trash2,
+  Save
 };
 
 @NgModule({
@@ -60,6 +62,7 @@ const icons = {
     RouterModule.forRoot(appRoutes),
     CheckboxModule,
     ButtonModule,
+    HttpClientModule,
     FeatherModule.pick(icons)
   ],
   providers: [RoutineService, PlanDayService, UserService],

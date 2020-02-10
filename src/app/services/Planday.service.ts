@@ -29,6 +29,7 @@ export class PlanDayService {
        // console.log('Debug : Jour semaine : ' + this.currentDay.day);
         this.getCurrentDayRoutines();
         this.getCurrentDayHebdoRoutines();
+        this.getCurrentDayMonthRoutines(dateDujour.getDate()) ;
         return this.currentDay;
     }
 
@@ -47,5 +48,11 @@ export class PlanDayService {
         console.log('Définition des routines hebdo du jour');
        // console.log('this.currentDay.day' + this.currentDay.day);
         this.currentDay.hebdoRoutines = this.routineService.getHebdoRoutines(this.currentDay.day);
+    }
+
+    getCurrentDayMonthRoutines(dayOfMonth: number) {
+        console.log('Définition des routine mensuelles du jour');
+        console.log('this.currentDay.day' + dayOfMonth);
+        this.currentDay.monthRoutine = this.routineService.getMonthRoutines(dayOfMonth);
     }
 }

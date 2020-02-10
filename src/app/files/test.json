@@ -39,8 +39,8 @@
         {
             "id":6,
             "name":"Piscine",
-            "frequence":"Mensuel",
-            "jour":0,
+            "frequence":"Mensuelle",
+            "jour":7,
             "ordre":1
         }
     ]

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeatherModule } from 'angular-feather';
 //--import { FeatherModule } from 'feather-icons';
-import { Camera, Heart, Github } from 'angular-feather/icons';
+import { Camera, Heart, Github, Save } from 'angular-feather/icons';
 //--import { Camera, Heart, Github } from 'feather-icons/dist/icons';
 
 
@@ -10,7 +10,8 @@ import { Camera, Heart, Github } from 'angular-feather/icons';
 const icons = {
   Camera,
   Heart,
-  Github
+  Github,
+  Save
 };
 
 @NgModule({

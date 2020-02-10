@@ -12,21 +12,23 @@
     </ul>
   </div>
 
-  <div class="card mb-5" style="width: 20rem;" *ngIf="hebdoRoutinesEditable()===true">
+  <div class="card mb-5" style="width: 20rem;">
     <div class="card-header">
       Tâches hebdo
     </div>
     <ul class="list-group list-group-flush">
-      <li *ngFor="let routine of planToday.hebdoRoutines" class="list-group-item">{{ routine.name }}</li>
+      <li *ngFor="let routine of planToday.hebdoRoutines" 
+        class="list-group-item">{{ routine.name }}</li>
     </ul>
   </div>
 
-  <div class="card mb-5" style="width: 20rem;" *ngIf="monthRoutinesEditable()===true">
+  <div class="card mb-5" style="width: 20rem;">
     <div class="card-header">
       Tâches mensuelles
     </div>
     <ul class="list-group list-group-flush">
-      <li *ngFor="let routine of planToday.monthRoutine" class="list-group-item">{{ routine.name }}</li>
+      <li *ngFor="let routine of planToday.monthRoutine" 
+        class="list-group-item">{{ routine.name }}</li>
     </ul>
   </div>
 </div>

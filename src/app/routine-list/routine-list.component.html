@@ -1,5 +1,11 @@
 <div class="jumbotron">
   <h5>Liste des routines</h5>
+  <div class="row">
+    <div class="col-md-3 offset-md-9">
+    <i-feather name="save" style="color: green;" (click)="onSaveRoutines()"></i-feather>
+  </div>
+  </div>
+ 
 </div>
 <div class="row">
   <div class="col-md-6 mb-5">
@@ -31,13 +37,14 @@
           <td>{{ routine.name }}</td>
           <td>{{ routine.frequence }}</td>
           <td *ngIf= "routine.jour === 0" class="text-align:center;"> - </td>
-          <td *ngIf= "routine.jour === 1">Lundi</td>
-          <td *ngIf= "routine.jour === 2">Mardi</td>
-          <td *ngIf= "routine.jour === 3">Mercredi</td>
-          <td *ngIf= "routine.jour === 4">Jeudi</td>
-          <td *ngIf= "routine.jour === 5">Vendredi</td>
-          <td *ngIf= "routine.jour === 6">Samedi</td>
-          <td *ngIf= "routine.jour === 7">Dimanche</td>
+          <td *ngIf= "routine.frequence === 'Mensuelle'" > {{ routine.jour }} </td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 1">Lundi</td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 2">Mardi</td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 3">Mercredi</td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 4">Jeudi</td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 5">Vendredi</td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 6">Samedi</td>
+          <td *ngIf= "routine.frequence === 'Hebdomadaire' && routine.jour === 7">Dimanche</td>
           <td>{{ routine.ordre }}</td>
           <td>
             <i-feather name="edit" style="color: green;" (click)="onModifyRoutine(routine)"></i-feather>

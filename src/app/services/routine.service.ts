@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Routine } from '../models/routine.model';
 import { Subject } from 'rxjs/Subject';
 import { JourSemaineEnum } from '../models/PlanDay.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 declare var require: any;
 var JSON = require('../files/test.json');
-
 
 
 @Injectable({
@@ -13,12 +14,12 @@ var JSON = require('../files/test.json');
 })
 export class RoutineService {
 
-
+  private listeRoutinePoint = '../files/test.json';
   routines: Routine[];
   routinesSubject = new Subject<Routine[]>();
 
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.getRoutines();
   }
 
@@ -26,8 +27,9 @@ export class RoutineService {
     this.routinesSubject.next(this.routines);
   }
 
-  getRoutines() {
-    this.routines = JSON.listeRoutines;
+  getRoutines(): Observable<any> {
+    //return this.http.get<any>(this.listeRoutinePoint);
+    return this.routines = JSON.listeRoutines;
     this.emitRoutines();
   }
 
@@ -59,6 +61,14 @@ export class RoutineService {
     const listeHebdo: Routine[] = this.routines.filter(routine =>
       routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1).filter(routine => routine.jour === day);
     return listeHebdo;
+  }
+
+  getMonthRoutines(day: number): Routine[] {
+    // Double filtre
+    const searchTerm: string = 'Mensuelle';
+    const listeMens: Routine[] = this.routines.filter(routine =>
+      routine.frequence.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1).filter(routine => routine.jour === day);
+    return listeMens;
   }
 
   getIndexRoutine(routineToFind: Routine) {
@@ -100,6 +110,12 @@ export class RoutineService {
   }
 
   saveRoutine() {
-   // JSON.listeRoutines = this.routines; //??
+    JSON.writeFile('../files/test.json', this.routines, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      };
+      console.log("File has been written");
+    });
   }
 }

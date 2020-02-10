@@ -1,4 +1,6 @@
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <p class="badge badge-warning"
+    *ngIf="messageAlert!=''"> {{ messageAlert }}</p>
     <div class="row">
         <div class="col-sm-12">
             <form (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -30,16 +32,16 @@
                                     name="frequence" 
                                     class="form-control" 
                                     [ngModel]="frequence" 
-                                   
+                                    (change)=changeFrequence($event.target.value)
                                     required>
                                 <option value="Quotidienne" >Quotidienne</option>
                                 <option value="Hebdomadaire">Hebdomadaire</option>
-                                <option value="Mensuel">Mensuel</option>
+                                <option value="Mensuelle">Mensuelle</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div *ngIf="frequence !='Quotidienne'"
+                        <div *ngIf="isChampsJoursemaineVisible===true"
                             class="form-group">
                             <label for="jour">
                                 Jour dans semaine
@@ -54,19 +56,25 @@
                                 <option value="7">Dimanche</option>
                             </select>
                         </div>
+                        <div *ngIf="isChampsJoursMoisVisible===true"
+                            class="form-group">
+                            <label for="jour">
+                                Jour du mois
+                            </label>
+                            <input type="text" id="jour" name="jour" class="form-control" [ngModel]="jour" required>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <button *ngIf="isNewTask==true"
                         class="btn btn-primary  mb-5 " type="submit" [disabled]="f.invalid">Creer</button>
                         <button *ngIf="isNewTask==false"
                         class="btn btn-primary  mb-5 " type="submit" [disabled]="f.invalid">Modifier</button>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                     <button class="btn btn-primary mb-5 feather feather-circle  " type="submit" (click)="onBack()">Retour</button>
                    </div>
-                   
                 </div>
             </form>
         </div>
